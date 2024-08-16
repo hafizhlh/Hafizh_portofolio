@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS tambahan untuk membuat tampilan sertifikat menjadi kesamping */
+        .certificates-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .certificate-item {
+            flex: 0 0 30%; /* Atur lebar setiap item sesuai kebutuhan, misal 30% */
+            margin: 10px;
+            text-align: center;
+            cursor: pointer;
+            overflow: hidden; /* Prevent overflow of scaled image */
+        }
+
+        .certificate-item img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: transform 0.3s ease; /* Tambahkan transisi pada transformasi */
+        }
+
+        /* Tambahkan efek saat hover */
+        .certificate-item:hover img {
+            transform: scale(1.05); /* Perbesar gambar saat hover */
+        }
+
+        /* Style untuk modal (gambar besar) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: 15% auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease; /* Tambahkan transisi pada modal */
+        }
+
+        .modal-content img:target {
+            transform: scale(1.1); /* Perbesar gambar di modal */
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* New CSS for navbar color */
+        .nav-bar {
+            background-color: #29313c; /* Set navbar color */
+            padding: 10px 20px; /* Add some padding for spacing */
+        }
+
+        .nav-bar .brand h1 {
+            color: #fff; /* Change brand text color to white */
+        }
+
+        .nav-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .nav-list ul li {
+            display: inline; /* Make list items horizontal */
+            margin: 0 15px; /* Space between items */
+        }
+
+        .nav-list ul li a {
+            color: #fff; /* Change link color to white */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .nav-list ul li a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <section id="header">
+        <div class="header container">
+            <div class="nav-bar">
+                <div class="brand">
+                    <a href="index.html">
+                        <h1><span>H</span>afizh <span>L</span>uqmanul <span>H</span>akim</h1>
+                    </a>
+                </div>
+                <div class="nav-list">
+                    <ul>
+                        <li><a href="index.html" data-after="Home">Home</a></li>
+                        <li><a href="index.html#about" data-after="About">About</a></li>
+                        <li><a href="index.html#services" data-after="Service">Services</a></li>
+                        <li><a href="index.html#projects" data-after="Projects">Projects</a></li>
+                        <li><a href="index.html#contact" data-after="Contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Header -->
+
+    <!-- Certificates Section -->
+    <section id="certificates">
+        <div class="container">
+            <h1></h1>
+            <div class="certificates-list">
+                <div class="certificate-item">
+                    <img src="./img/Sertifikat 2.jpg" alt="Certificate 1" onclick="openModal(this)">
+                </div>
+                <div class="certificate-item">
+                    <img src="./img/Sertifikat 3.jpg" alt="Certificate 2" onclick="openModal(this)">
+                </div>
+                <div class="certificate-item">
+                    <img src="./img/Sertifikat 4.jpg" alt="Certificate 3" onclick="openModal(this)">
+                </div>
+                <!-- Add more certificates here -->
+            </div>
+        </div>
+    </section>
+    <!-- End Certificates Section -->
+
+    <!-- Modal for Image -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="">
+        </div>
+    </div>
+    <!-- End Modal -->
+
+    <!-- Footer -->
+    <section id="footer">
+        <div class="footer container">
+            <div class="brand">
+                <h1><span>H</span>afizh <span>L</span>uqmanul <span>H</span>akim</h1>
+            </div>
+            <h2>Your Complete Web Solution</h2>
+            <p>Copyright Hafizh . All rights reserved</p>
+        </div>
+    </section>
+    <!-- End Footer -->
+
+    <script>
+        // Function to open modal
+        function openModal(imgElement) {
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("modalImage");
+            modal.style.display = "block";
+            modalImg.src = imgElement.src;
+        }
+
+        // Function to close modal
+        function closeModal() {
+            var modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
